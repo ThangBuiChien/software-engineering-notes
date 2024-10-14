@@ -1,76 +1,76 @@
-## Inheritance and polymorphism
+## Inheritance and Polymorphism
 
 ### General
 
-Subclass extends SuperClass <=> Subclass inherited SuperClass
-
-Many method override in one object? => the **lowest** the most **specifics** one wins
+- **Subclass extends SuperClass** ⇔ **Subclass inherits SuperClass**.
+- Multiple methods can be overridden in an object, but the **most specific** (lowest in the hierarchy) version is invoked.
 
 ### Inheritance
 
-- Using is-a and has-a
-  - A extends B <=> A is B
-  - Ex: Cat extends Animal then ask "Cat is animals" is make sense or not?
-  - A extends B in just **one direction**
-  - Ex: Water is a drinks but not all drinks is water
-  - "A is B" not make sense => it is "has-a" relationship
-    Ex: desk "is-a" room is not make sends but room "has-a" desk ok
-- Private properties is **not** inherited
-- Override method but not change whole but want reuse some ==> **super**
+- **Is-a** and **Has-a** relationships:
+  - **A extends B** ⇔ **A is B**.
+    - Example: If `Cat extends Animal`, then asking "Is a cat an animal?" makes sense.
+  - **A extends B** works only in one direction.
+    - Example: Water is a drink, but not all drinks are water.
+  - If "A is B" doesn’t make sense, it’s a **Has-a** relationship.
+    - Example: A desk "is a" room doesn’t make sense, but a room "has a" desk does.
+- **Private properties** are **not inherited**.
+- To override a method but still reuse some functionality of the superclass, use **`super`**:
 
-```java
-public void eat(){
-    super.eat();
-    // new more code below
-}
-```
+  ```java
+  public void eat() {
+      super.eat(); // Reuse superclass method
+      // Additional code below
+  }
+  ```
 
-- Use Inheritance with **_caution_** -> it not all-size-fit-all for reuse. ALWAYS check the "is-a" test
+- Use inheritance with **caution** — it’s not a one-size-fits-all solution for reuse. Always check the **Is-a** test.
 
 ### Polymorphism
 
-- How reference object is created?
+- **How is a reference object created?**
 
   ```java
   Dog myDog = new Dog();
   ```
 
-  - **Dog myDog** = new Dog()=> allocate space for a reference variable, think it like like **an remote** which store an reference to the object
-  - Dog myDog = **new Dog()** => create **dog object**
-  - Dog myDog **=** new Dog(); => program, link the remote control
+  - `Dog myDog` creates a reference variable (like a remote control) that stores a reference to the object.
+  - `new Dog()` creates the actual Dog object.
+  - `=` links the reference variable to the object.
 
-- Object of subclass is could be linked in parent reference varibles
+- A subclass object can be assigned to a parent reference variable:
 
-```java
-    Animal[] animals = new Animal[3];
-    animals[0] = new Dog();
-    animals[1] = new Cat();
-    animals[2] = new Lion();
-    for (Animal animal : animals) {
-        animal.eat();
-        animal.roam();
-    }
-```
+  ```java
+  Animal[] animals = new Animal[3];
+  animals[0] = new Dog();
+  animals[1] = new Cat();
+  animals[2] = new Lion();
 
-```java
-    Animal animal = new Dog();
-    animal.eat() //Call the eat method in Dog class
-    //it based on the run time type of object to call the method ==> run time polymorphism
-```
+  for (Animal animal : animals) {
+      animal.eat();
+      animal.roam();
+  }
+  ```
 
-==> polymorphism. Any object of class that extends superclass could use these method
+  ```java
+  Animal animal = new Dog();
+  animal.eat(); // Calls the eat method in the Dog class
+  ```
+
+  - The method called depends on the runtime type of the object, known as **runtime polymorphism**.
+
+- Polymorphism allows any object of a subclass to use methods of the superclass.
 
 ### Override vs Overload
 
 #### Override
 
-=> Keep the contract
-
-- Arguments must be the same
-- Return types must be compatible
-- The method can’t be less accessible
+- Keeps the same method signature:
+  - Arguments must be the same.
+  - Return types must be compatible.
+  - The method can’t be less accessible.
 
 #### Overload
 
-- **Must** change arguments
-- Return type, accessible could be changed **optional**
+- **Must** change the arguments.
+- Return type and accessibility can be changed, but it's **optional**.
