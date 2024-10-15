@@ -3,27 +3,34 @@
 ## Headers
 
 # H1
+
 ## H2
+
 ### H3
+
 #### H4
+
 ##### H5
+
 ###### H6
 
 ## Emphasis
 
-*italic* or _italic_
-**bold** or __bold__
-***bold italic*** or ___bold italic___
+_italic_ or _italic_
+**bold** or **bold**
+**_bold italic_** or **_bold italic_**
 
 ## Lists
 
 Unordered:
+
 - Item 1
 - Item 2
   - Subitem 2.1
   - Subitem 2.2
 
 Ordered:
+
 1. First item
 2. Second item
    1. Subitem 2.1
@@ -42,6 +49,7 @@ Ordered:
 Inline code: `var example = true`
 
 Code blocks:
+
 ```python
 def hello_world():
     print("Hello, World!")
@@ -59,7 +67,7 @@ def hello_world():
 ## Tables
 
 | Header 1 | Header 2 |
-|----------|----------|
+| -------- | -------- |
 | Cell 1   | Cell 2   |
 | Cell 3   | Cell 4   |
 
@@ -74,3 +82,7 @@ Here's a sentence with a footnote. [^1]
 
 [^1]: This is the footnote.
 
+<details>
+  <summary>Click to toggle text</summary>
+  This is the hidden text that will be shown when you click the summary.
+</details>
