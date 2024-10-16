@@ -4,6 +4,8 @@
 
 [Interfaces and Abstract classes](#interfaces-and-abstract-classes)
 
+[Constructors and Garbage collection](#constructors-and-garbage-collection)
+
 ## Inheritance and Polymorphism
 
 [Back to Table of Contents](#table-of-contents)
@@ -128,3 +130,48 @@ d.bark(); // work
   - => using interfact solution mean abstract all method solve those problem
 - A Java interface is like a 100% pure abstract class
 - A class that implements an interface must implement all the methods of the interface, except default and static methods
+
+## Constructors and Garbage collection
+
+[Back to Table of Contents](#table-of-contents)
+
+### Stack and Heap
+
+- **Stack**: Where method invocations and local variables live
+- Local variables are declared inside a method, including
+  method parameters
+- **Heap**: Where **ALL** objects live
+- Instance variables are declared inside a class but not
+  inside a method => live in the heap as it in object and object live in heap
+
+### Constructors
+
+- **Constructor**: A special method that runs when an object is created
+- Constructors cannot have a return type, not even void
+- Complier create default constructor if you don't create any constructor
+- But if you create a constructor, the default constructor is not created
+- Constructor provide you a chance to step in and do things to
+  get the object ready for use
+- When created, the Instance variables do have a default value. 0 or
+  0.0 for numeric primitives, false for booleans, and
+  null for references
+- You cannot have two constructors with the same argument lists. An argument list includes the order and
+  type of arguments
+
+### Constructors and SuperClass
+
+- When subclass is created, it must create the superclass first. Child borned before parent make no sense :)
+- The complier will automatically call parent constructor using super() at the top of the child constructor
+- this() and super() must be called at top level
+- this() mean reference to the current object.
+- A constructor can have a call to super() OR this(), but never both!
+
+### Life and death of an object
+
+- A local variable lives only within the method that declared the variable => It live as long as function in a Stack
+- An instance variable lives as long as the object does. If the object is still alive, so are its instance variables.
+- When an object is no longer reachable, it is a candidate for garbage collection
+- Three ways to get rid of an object’s reference:
+  1. The reference goes out of scope, permanently
+  2. The reference is assigned another object
+  3. The reference is explicitly set to null
