@@ -8,6 +8,8 @@
 - [Building Images](#building-images)
   - [Dockerfile](#dockerfile)
   - [Docker Build](#docker-build)
+- [Docker command](#docker-command)
+  - [Image And Container](#image-and-container)
 
 # Basic Definition
 
@@ -76,3 +78,107 @@ Docker uses a build cache to speed up the image building process by reusing laye
 ## Multi-stage builds
 
 Multi-stage builds allow you to use multiple FROM statements in a Dockerfile to create intermediate images. This technique helps in reducing the final image size by copying only the necessary artifacts from intermediate stages.
+
+# Docker command
+
+## Image And Container
+
+```
+docker build -t {name}:{version} .
+```
+
+```
+docker run -d --rm --name {name of container} -p 80:80 {name of images}
+```
+
+```
+docker stop {name or id}
+```
+
+```
+docker start {name of existed container}
+```
+
+```
+docker rm {name of container}
+```
+
+```
+docker rmi {name of images}
+```
+
+```
+docker ps -a
+```
+
+```
+docker images
+```
+
+## Docker Volume Management
+
+![Docker Volume Types](image.png)
+
+Docker volumes come in three main types: **Named Volumes**, **Anonymous Volumes**, and **Bind Mounts**. Each serves a unique purpose in container data persistence and file management between host and container.
+
+### Volume Types and Usage
+
+#### 1. Named Volume
+
+Used for persistent data management by Docker. Named volumes are ideal for data that should survive container restarts and upgrades.
+
+```bash
+docker run -v data:/app/data
+
+```
+
+#### 2. Anonymous Volume
+
+Protects specific paths in the container from being overwritten by the host. Useful when you want Docker to manage the path without linking it to a specific host directory.
+
+```bash
+docker run -v /app/data
+
+```
+
+** Example: **
+
+Without anonymous volumes, some paths may be wiped out. With anonymous volumes, the container can maintain directories like node_modules which might otherwise be deleted.
+
+```
+Without anonymous volume:
+Local Directory      Container
+my-app/              /app/
+  ├── src/     →       ├── src/
+  ├── package.json →   ├── package.json
+  └── (no modules)  →  └── (modules get wiped out!)
+
+With anonymous volume:
+Local Directory      Container
+my-app/              /app/
+  ├── src/     →       ├── src/
+  ├── package.json →   ├── package.json
+  └── (no modules)     └── node_modules/ (preserved!)
+
+```
+
+#### 3. Bind Mount
+
+Allows direct file sharing between the host and container. It’s particularly useful for development as changes on the host are reflected in the container immediately.
+
+```bash
+docker run -v "%cd%:/app"
+# or specify an absolute path
+docker run -v /path/to/code:/app
+```
+
+#### 4. Example: Create Volumes with All Types
+
+```
+docker run -d --rm -p 3000:80 --name docker-app \
+  -v feedback:/app/feedback \   # Named volume
+  -v "%cd%:/app" \              # Bind mount
+  -v /app/node_modules \         # Anonymous volume
+  docker-app:volumes
+
+```
