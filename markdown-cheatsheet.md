@@ -24,6 +24,8 @@
 
 [Footnotes](#footnotes)
 
+[Details](#details)
+
 ## Headers
 
 ## Headers
@@ -130,7 +132,9 @@ Here's a sentence with a footnote. [^1]
 
 [^1]: This is the footnote.
 
+## Details
+
 <details>
   <summary>Click to toggle text</summary>
-  This is the hidden text that will be shown when you click the summary
+  This is the hidden text that will be shown when you click the summary.
 </details>
