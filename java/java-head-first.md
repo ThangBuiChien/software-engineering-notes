@@ -1,10 +1,14 @@
 # Table of Contents
 
-[Inheritance and Polymorphism](#inheritance-and-polymorphism)
+[7.Inheritance and Polymorphism](#inheritance-and-polymorphism)
 
-[Interfaces and Abstract classes](#interfaces-and-abstract-classes)
+[8.Interfaces and Abstract classes](#interfaces-and-abstract-classes)
 
-[Constructors and Garbage collection](#constructors-and-garbage-collection)
+[9.Constructors and Garbage collection](#constructors-and-garbage-collection)
+
+[11.Collection and Generics](#collection-framework)
+
+[JAVA 8+ Features](#java-8-features)
 
 ## Inheritance and Polymorphism
 
@@ -172,6 +176,23 @@ d.bark(); // work
 - An instance variable lives as long as the object does. If the object is still alive, so are its instance variables.
 - When an object is no longer reachable, it is a candidate for garbage collection
 - Three ways to get rid of an object’s reference:
+
   1. The reference goes out of scope, permanently
   2. The reference is assigned another object
   3. The reference is explicitly set to null
+
+  ## Collection Framework
+
+![alt text](images/image.png)
+
+## Java 8 features
+
+### Lambda Expressions
+
+### Stream API
+
+### Functional Interfaces
+
+### Method References
+
+### Optional
