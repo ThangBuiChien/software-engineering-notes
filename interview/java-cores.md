@@ -7,24 +7,349 @@
 - [Collections Framework](#collections-framework)
 - [Exception Handling](#exception-handling)
 - [Multithreading](#multithreading)
-- [Code Examples](#code-examples)
 - [Additional Topics](#additional-topics)
 
 ## OOP Fundamentals
 
-- **Classes and Objects**
-- **Inheritance**
-- **Polymorphism**
-- **Encapsulation**
-- **Abstraction**
+- [**Classes and Objects**](#classes-and-objects)
+- [**Inheritance**](#inheritance)
+- [**Polymorphism**](#polymorphism)
+- [**Encapsulation**](#encapsulation)
+- [**Abstraction**](#abstraction)
+
+### **Classes and Objects**
+
+- Class is blueprint, Object is instance
+- Constructor initializes object
+- Objects have state and behavior
+
+```java
+
+// Class - Blueprint
+public class Student {
+    // State (attributes)
+    private String name;
+    private int age;
+    private String grade;
+
+    // Constructor
+    public Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Default constructor
+    public Student() {
+        this.name = "Unknown";
+        this.age = 0;
+    }
+
+    // Behavior (methods)
+    public void study() {
+        System.out.println(name + " is studying");
+    }
+}
+
+// Creating Objects (Instances)
+Student student1 = new Student("John", 20);
+Student student2 = new Student();
+```
+
+### **Inheritance**
+
+- Reuse code
+- 'extends' keyword
+- Types: Single, Multilevel, Hierarchical
+- Java doesn't support multiple inheritance
+
+```java
+
+// Single Inheritance
+class Animal {
+    void eat() { }
+}
+class Dog extends Animal { }  // Single
+
+// Multilevel Inheritance
+class Animal {
+    void eat() { }
+}
+class Dog extends Animal { }
+class Labrador extends Dog { } // Multilevel
+
+// Hierarchical Inheritance
+class Animal {
+    void eat() { }
+}
+class Dog extends Animal { }
+class Cat extends Animal { }   // Hierarchical
+
+// Multiple Inheritance (Not Supported in Java)
+class Dog extends Animal, Pet { } // NOT ALLOWED
+// Instead use interfaces
+interface Animal { }
+interface Pet { }
+class Dog implements Animal, Pet { } // This is allowed
+
+```
+
+### **Polymorphism**
+
+- Method Overriding (Runtime)
+- Method Overloading (Compile-time)
+- Same interface, different implementations
+
+```java
+
+// Method Overriding (Runtime Polymorphism)
+class Animal {
+    public void makeSound() {
+        System.out.println("Some sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    public void makeSound() {
+        System.out.println("Woof");
+    }
+}
+
+// Method Overloading (Compile-time Polymorphism)
+class Calculator {
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    double add(double a, double b) {
+        return a + b;
+    }
+
+    int add(int a, int b, int c) {
+        return a + b + c;
+    }
+}
+
+```
+
+### **Encapsulation**
+
+- Data hiding
+- Private fields, public methods
+- Getter/Setter methods
+- Validates data access
+
+```java
+
+public class Employee {
+    // Private fields (data hiding)
+    private String name;
+    private double salary;
+
+    // Public getters/setters (controlled access)
+    public String getName() {
+        return name;
+    }
+
+    public void setSalary(double salary) {
+        if (salary > 0) {  // Data validation
+            this.salary = salary;
+        } else {
+            throw new IllegalArgumentException("Salary must be positive");
+        }
+    }
+
+    // Business logic methods
+    public void giveRaise(double percentage) {
+        if (percentage > 0 && percentage <= 100) {
+            this.salary += this.salary * (percentage/100);
+        }
+    }
+}
+
+```
+
+### **Abstraction**
+
+- Hide implementation details
+- Abstract classes vs Interfaces
+- Focus on essential features
+- Reduce complexity
+
+```java
+
+// Abstract class
+abstract class Vehicle {
+    abstract void start();  // Abstract method
+
+    // Concrete method
+    void stop() {
+        System.out.println("Vehicle stopping");
+    }
+}
+
+// Interface
+interface Flyable {
+    void fly();
+    void land();
+}
+
+// Concrete implementation
+class Airplane extends Vehicle implements Flyable {
+    @Override
+    void start() {
+        System.out.println("Airplane starting engines");
+    }
+
+    @Override
+    public void fly() {
+        System.out.println("Airplane taking off");
+    }
+
+    @Override
+    public void land() {
+        System.out.println("Airplane landing");
+    }
+}
+```
 
 ## Java Basics
 
-- **Data Types & Variables**
-- **Control Statements**
-- **Arrays**
-- **String handling**
-- **Access modifiers**
+- [**Data Types & Variables**](#data-types--variables)
+- [**Control Statements**](#control-statements)
+- [**Arrays**](#arrays)
+- [**String handling**](#string-handling)
+- [**Access modifiers**](#access-modifiers)
+
+### **Data Types & Variables**
+
+- **Primitive data types**: byte, short, int, long, float, double, char, boolean
+- **Reference data types**: String, Array, Class, Interface
+
+```java
+  // Primitive Types
+byte b = 127;                  // 8-bit
+short s = 32767;              // 16-bit
+int i = 2147483647;           // 32-bit
+long l = 9223372036854775807L;// 64-bit
+float f = 3.14f;              // 32-bit floating point
+double d = 3.14159;           // 64-bit floating point
+boolean bool = true;          // true/false
+char c = 'A';                 // 16-bit Unicode character
+
+// Reference Types
+String str = "Hello";
+Integer wrapper = 42;         // Wrapper class
+```
+
+### **Control Statements**
+
+```java
+  // If-else
+if (condition) {
+    // code
+} else if (another_condition) {
+    // code
+} else {
+    // code
+}
+
+// Switch
+switch (variable) {
+    case 1:
+        // code
+        break;
+    default:
+        // code
+}
+
+// Loops
+for (int i = 0; i < 10; i++) {
+    // code
+}
+
+while (condition) {
+    // code
+}
+
+do {
+    // code
+} while (condition);
+
+// Enhanced for loop
+for (String item : collection) {
+    // code
+}
+```
+
+### **Arrays**
+
+```java
+// Array Declaration
+int[] numbers = new int[5];
+int[] initialized = {1, 2, 3, 4, 5};
+
+// 2D Array
+int[][] matrix = new int[3][3];
+int[][] initialized2D = {{1,2}, {3,4}};
+
+// Array operations
+numbers[0] = 1;              // Assignment
+int length = numbers.length; // Length
+Arrays.sort(numbers);        // Sorting
+
+```
+
+### **String handling**
+
+```java
+// String creation
+String s1 = "Hello";                 // String literal
+String s2 = new String("Hello");     // String object
+
+// Common operations
+String concat = s1 + " World";       // Concatenation
+int length = s1.length();            // Length
+char ch = s1.charAt(0);              // Character at index
+String sub = s1.substring(0, 3);     // Substring
+boolean equals = s1.equals(s2);      // Comparison
+String lower = s1.toLowerCase();      // Case conversion
+
+// StringBuilder (mutable)
+StringBuilder sb = new StringBuilder();
+sb.append("Hello");
+sb.append(" World");
+String result = sb.toString();
+```
+
+- **String vs StringBuilder vs StringBuffer**
+
+  - **String**: Immutable, thread-safe, slow performance.
+  - **StringBuilder**: Mutable, not thread-safe, fast performance.
+  - **StringBuffer**: Mutable, thread-safe, slow performance.
+
+  - String Pool: A pool of unique strings stored in the heap memory.
+
+```java
+// String Pool demonstration
+String s1 = "hello";           // creates in string pool
+String s2 = "hello";           // reuses from pool
+String s3 = new String("hello");// creates new object outside pool
+
+System.out.println(s1 == s2);      // true (same reference)
+System.out.println(s1 == s3);      // false (different reference)
+System.out.println(s1.equals(s3)); // true (same content)
+
+```
+
+### **Access modifiers**
+
+- **Public**: Accessible from any class.
+- **Protected**: Accessible within the same package and subclasses.
+- **Default (no modifier)**: Accessible within the same package.
+- **Private**: Accessible only within the same class.
+
+- public > protected > default > private
 
 ## Collections Framework
 
@@ -32,6 +357,7 @@
 - **ArrayList, LinkedList**
 - **HashSet, TreeSet**
 - **HashMap, TreeMap**
+  ![alt text](../java/images/image.png)
 - **Comparable vs Comparator**
 
 ## Exception Handling
