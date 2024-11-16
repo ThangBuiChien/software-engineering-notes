@@ -139,23 +139,7 @@ New --> Runnable --> Running --> (Blocked / Waiting / Timed Waiting) --> Runnabl
         }
     }
     ```
-  ```java
-  public class Counter {
-    private int count = 0;
-    private final Object lock = new Object(); // Lock object for synchronization
-
-    // Synchronized block
-    public void increment() {
-        synchronized (lock) {
-            count++;
-        }
-    }
-
-    public int getCount() {
-        return count;
-    }
-  }  
-  ```
+  
 - **Synchronization**
   Synchronization is used to control the access of multiple threads to shared resources. It helps prevent thread interference and memory consistency errors.
   - **Synchronized methods**
@@ -171,6 +155,24 @@ New --> Runnable --> Running --> (Blocked / Waiting / Timed Waiting) --> Runnabl
             // Synchronized code
         }
     }
+    ```
+
+    ```java
+    public class Counter {
+      private int count = 0;
+      private final Object lock = new Object(); // Lock object for synchronization
+  
+      // Synchronized block
+      public void increment() {
+          synchronized (lock) {
+              count++;
+          }
+      }
+  
+      public int getCount() {
+          return count;
+      }
+    }  
     ```
 - **Thread states**
   - **NEW** : The thread is created but not yet started.
