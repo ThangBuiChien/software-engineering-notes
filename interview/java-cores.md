@@ -465,9 +465,10 @@ New --> Runnable --> Running --> (Blocked / Waiting / Timed Waiting) --> Runnabl
         }
     }
     ```
-  
+
 - **Synchronization**
   Synchronization is used to control the access of multiple threads to shared resources. It helps prevent thread interference and memory consistency errors.
+
   - **Synchronized methods**
     ```java
     public synchronized void myMethod() {
@@ -475,6 +476,7 @@ New --> Runnable --> Running --> (Blocked / Waiting / Timed Waiting) --> Runnabl
     }
     ```
   - **Synchronized blocks**
+
     ```java
     public void myMethod() {
         synchronized (this) {
@@ -487,19 +489,20 @@ New --> Runnable --> Running --> (Blocked / Waiting / Timed Waiting) --> Runnabl
     public class Counter {
       private int count = 0;
       private final Object lock = new Object(); // Lock object for synchronization
-  
+
       // Synchronized block
       public void increment() {
           synchronized (lock) {
               count++;
           }
       }
-  
+
       public int getCount() {
           return count;
       }
-    }  
+    }
     ```
+
 - **Thread states**
   - **NEW** : The thread is created but not yet started.
   - **RUNNABLE**: The thread is ready to run and waiting for CPU time.
@@ -575,7 +578,134 @@ public class WaitNotifyExample {
 
 ## Additional Topics
 
-- **Java 8 features (Lambda, Stream API)**
+- **Java 8 features (Lambda, Stream API, etc)**
+- **Memory management (Stack vs Heap)**
+- **Final, Finally, Finalize**
+- **Interface vs Abstract class**
+- **Constructor types**
+- **Method overloading vs overriding**
+
+- **Java 8 features (Lambda, Stream API, etc)**
+
+1. **Lambda Expressions**: Lambda expressions are used to provide an implementation of a functional interface. They are used to write more concise and readable code.
+
+- More readable code
+- Functional programming support
+- Enable parallel processing
+
+```java
+// Before Java 8
+Runnable runnable = new Runnable() {
+    @Override
+    public void run() {
+        System.out.println("Old way");
+    }
+};
+
+// With Lambda
+Runnable runnable = () -> System.out.println("Lambda way");
+
+// Common Lambda Examples
+List<String> names = Arrays.asList("John", "Jane", "Bob");
+names.forEach(name -> System.out.println(name));
+Collections.sort(names, (a, b) -> a.compareTo(b));
+
+```
+
+2. **Stream API**: The Stream API is used to process collections of objects. It provides a functional programming approach to processing data.
+
+- Chain operations
+- Parallel processing
+- Declarative programming
+
+```java
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
+
+// Filter, Map, Reduce operations
+numbers.stream()
+       .filter(n -> n % 2 == 0)     // get even numbers
+       .map(n -> n * n)             // square them
+       .forEach(System.out::println);
+
+// Common Stream operations
+// 1. Filtering
+List<Integer> evenNumbers = numbers.stream()
+    .filter(n -> n % 2 == 0)
+    .collect(Collectors.toList());
+
+// 2. Mapping
+List<String> mapped = numbers.stream()
+    .map(n -> "Number: " + n)
+    .collect(Collectors.toList());
+
+// 3. Sorting
+List<String> sorted = names.stream()
+    .sorted()
+    .collect(Collectors.toList());
+
+// 4. Statistics
+int sum = numbers.stream()
+    .mapToInt(Integer::intValue)
+    .sum();
+
+// 5. Grouping
+Map<Integer, List<Integer>> grouped = numbers.stream()
+    .collect(Collectors.groupingBy(n -> n % 2));
+
+```
+
+3. **Optional**: Optional is a container object that may or may not contain a non-null value. It is used to avoid NullPointerExceptions.
+
+- Better null handling
+- More readable code
+- Avoid NullPointerException
+
+```java
+// Avoiding null checks
+Optional<String> optional = Optional.of("hello");
+optional.ifPresent(s -> System.out.println(s));
+
+// Chain operations
+String result = optional
+    .map(String::toUpperCase)
+    .orElse("default");
+```
+
+4. **Default Methods**: Default methods allow interfaces to have methods with implementation. They provide a way to add new methods to interfaces without breaking existing implementations.
+
+- Interface evolution
+- Backward compatibility
+- Multiple inheritance of behavior
+
+```java
+interface Vehicle {
+    // Abstract method
+    void start();
+
+    // Default method
+    default void horn() {
+        System.out.println("Beep!");
+    }
+}
+```
+
+5. **Functional Interfaces**: Functional interfaces have exactly one abstract method. They can have multiple default or static methods.
+
+6. **Method References**: Method references provide a way to refer to methods or constructors without invoking them.
+
+- Cleaner syntax
+- Four types: static, instance, constructor, arbitrary object
+
+```java
+List<String> names = Arrays.asList("John", "Jane", "Bob");
+
+// Different types of method references
+names.forEach(System.out::println);  // Static
+names.stream()
+     .map(String::toUpperCase)       // Instance
+     .collect(Collectors.toList());
+```
+
 - **Memory management (Stack vs Heap)**
 - **Final, Finally, Finalize**
 - **Interface vs Abstract class**
