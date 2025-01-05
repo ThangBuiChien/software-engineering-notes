@@ -181,9 +181,13 @@ d.bark(); // work
   2. The reference is assigned another object
   3. The reference is explicitly set to null
 
-  ## Collection Framework
+## Collection Framework
 
 ![alt text](images/image.png)
+
+### Natural sort, alphabetical sort
+
+- Special character | Number > UpperCase > LowerCase
 
 ## Java 8 features
 
