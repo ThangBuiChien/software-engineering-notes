@@ -420,6 +420,27 @@ System.out.println(s1.equals(s3)); // true (same content)
 
   ```
 
+  - ** in spring boot **
+    - **@ControllerAdvice**: Used to define global exception handlers for all controllers.
+    - **@ExceptionHandler**: Used to define methods that handle specific exceptions.
+
+  ```java
+  @ControllerAdvice
+    public class GlobalExceptionHandler {
+
+        @ExceptionHandler(MyCustomException.class)
+        public ResponseEntity<String> handleMyCustomException(MyCustomException ex) {
+            return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+
+        // Handle other exceptions
+        @ExceptionHandler(Exception.class)
+        public ResponseEntity<String> handleException(Exception ex) {
+            return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+  ```
+
 ## Multithreading
 
 - **Thread lifecycle**
@@ -707,6 +728,14 @@ names.stream()
 ```
 
 - **Memory management (Stack vs Heap)**
+
+  - **Stack**: Where method invocations and local variables live
+  - Local variables are declared inside a method, including
+    method parameters
+  - **Heap**: Where **ALL** objects live
+  - Instance variables are declared inside a class but not
+    inside a method => live in the heap as it in object and object live in heap
+
 - **Final, Finally, Finalize**
 - **Interface vs Abstract class**
 - **Constructor types**
