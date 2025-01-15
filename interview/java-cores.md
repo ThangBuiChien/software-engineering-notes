@@ -353,12 +353,75 @@ System.out.println(s1.equals(s3)); // true (same content)
 
 ## Collections Framework
 
-- **List, Set, Map interfaces**
-- **ArrayList, LinkedList**
-- **HashSet, TreeSet**
-- **HashMap, TreeMap**
-  ![alt text](../java/images/image.png)
+- **Hierarchy and Relationships**
+- **When to Use Which Collection**
+- **Common Methods of collection**
 - **Comparable vs Comparator**
+- **Thread-safe Collections**
+- **Specialized Collections: Stack, Queue, Deque, Vector**
+- **Immutable Collections**
+
+  ![alt text](../java/images/image.png)
+
+- **Common Methods of collection**
+
+- Collection-general Methods
+
+```java
+  add(E e): Adds an element to the collection.
+  remove(Object o): Removes a specific element.
+  size(): Returns the size of the collection.
+  isEmpty(): Checks if the collection is empty.
+  contains(Object o): Checks if the collection contains a specific element.
+  clear(): Removes all elements from the collection.
+  iterator(): Returns an iterator to traverse the collection.
+```
+
+- List-Specific Methods
+
+```java
+add(int index, E element): Inserts an element at a specific index.
+
+get(int index): Retrieves the element at a specific index.
+
+set(int index, E element): Updates the element at a specific index.
+
+remove(int index): Removes the element at a specific index.
+
+indexOf(Object o): Returns the first occurrence of an element.
+
+lastIndexOf(Object o): Returns the last occurrence of an element.
+
+subList(int fromIndex, int toIndex): Returns a view of the specified range.
+```
+
+- Set - Specific Methods
+
+```java
+add(E e): Adds an element (ignores duplicates).
+```
+
+- Map - Specific Methods
+
+```java
+
+put(K key, V value): Associates a key with a value.
+
+get(Object key): Retrieves a value by its key.
+
+remove(Object key): Removes a key-value pair.
+
+containsKey(Object key): Checks if a key exists.
+
+containsValue(Object value): Checks if a value exists.
+
+keySet(): Returns a set of keys.
+
+values(): Returns a collection of values.
+
+entrySet(): Returns a set of key-value pairs.
+
+```
 
 ## Exception Handling
 

@@ -8,6 +8,8 @@
 
 [11.Collection and Generics](#collection-framework)
 
+[12. Stream and Lambda](#stream-lambda)
+
 [JAVA 8+ Features](#java-8-features)
 
 ## Inheritance and Polymorphism
@@ -188,6 +190,20 @@ d.bark(); // work
 ### Natural sort, alphabetical sort
 
 - Special character | Number > UpperCase > LowerCase
+
+## Java Object Law for hashCode() and equals()
+
+The API docs for class Object state the rules you MUST follow:
+
+- If two objects are equal, they MUST have matching hash codes.
+- If two objects are equal, calling equals() on either object MUST return true. In other words, if (a.equals(b)) then (b.equals(a)).
+- If two objects have the same hash code value, they are NOT required to be equal. But if they’re equal, they MUST have the same hash code value.
+- So, if you override equals(), you MUST override hashCode().
+- The default behavior of hashCode() is to generate a unique integer for each object on the heap. So if you don’t override hashCode() in a class, no two objects of that type can EVER be considered equal.
+- The default behavior of equals() is to do an == comparison. In other words, to test whether the two references refer to a single object on the heap. So if you don’t override equals() in a class, no two objects can EVER be considered equal since references to two different objects will always contain a different bit pattern.
+
+a.equals(b) must also mean that a.hashCode() == b.hashCode()  
+But a.hashCode() == b.hashCode() does NOT have to mean a.equals(b)
 
 ## Java 8 features
 
