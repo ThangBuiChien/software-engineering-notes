@@ -236,3 +236,26 @@ equals() compares the value of two objects to see if they are meaningfully equiv
 int[] numbers1 = new int[3];
 // type of array, array symbol, name of array, size of array
 ```
+
+#### Creating an Array of Primitives
+
+```java
+int[] numbers2 = new int[] {42, 55, 99};
+int[] numbers3 = {42, 55, 99}; //is also fine, it called anonymous array
+```
+
+you can type the [] before or after the name
+
+```java
+int[] numAnimals;
+int [] numAnimals2;
+int numAnimals3[];
+int numAnimals4 [];
+```
+
+#### Creating an Array of Reference
+
+```java
+
+
+```

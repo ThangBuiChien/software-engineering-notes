@@ -205,14 +205,168 @@ The API docs for class Object state the rules you MUST follow:
 a.equals(b) must also mean that a.hashCode() == b.hashCode()  
 But a.hashCode() == b.hashCode() does NOT have to mean a.equals(b)
 
-## Java 8 features
+## Stream Lambda
 
-### Lambda Expressions
+# Java Core: Streams & Lambdas Notes
 
-### Stream API
+## **Streams**
 
-### Functional Interfaces
+### **Key Concepts**
 
-### Method References
+1. **Intermediate Operations vs. Terminal Operations**:
 
-### Optional
+   - **Intermediate Operations**: Lazy, return a new stream (e.g., `filter`, `map`, `sorted`).
+   - **Terminal Operations**: Trigger the stream pipeline and return a result or produce side effects (e.g., `collect`, `forEach`, `reduce`).
+
+2. **How Streams Work**:
+   - **Stream Object**: Created from collections, arrays, or Stream API (`list.stream()`, `Arrays.stream()`, `Stream.of()`).
+   - **Pipeline**: Intermediate operations form a pipeline (like a recipe).
+   - **Activation**: Terminal operations activate the pipeline.
+   - **Single Use**: Streams can only be used once after a terminal operation.
+   - **No Mutation**: Streams do not modify the original data source.
+
+### **Important Methods**
+
+#### **Intermediate Operations**:
+
+- `filter(Predicate)`: Filters elements based on a condition.
+- `map(Function)`: Transforms each element.
+- `flatMap(Function)`: Flattens nested structures.
+- `distinct()`: Removes duplicates.
+- `sorted()`: Sorts elements.
+- `limit(n)`: Limits the stream to n elements.
+- `skip(n)`: Skips the first n elements.
+
+#### **Terminal Operations**:
+
+- `collect(Collector)`: Converts the stream into a collection or other format.
+- `reduce(BinaryOperator)`: Reduces the elements to a single value.
+- `forEach(Consumer)`: Performs an action for each element.
+- `count()`: Returns the number of elements.
+- `anyMatch/noneMatch/allMatch(Predicate)`: Tests conditions on elements.
+
+### **Additional Topics**
+
+1. **Stream Creation**:
+
+   - From Collections: `list.stream()`
+   - From Arrays: `Arrays.stream(array)`
+   - Using Stream API: `Stream.of(value1, value2, ...)`
+
+2. **Parallel Streams**:
+
+   - Use `parallelStream()` for parallel processing.
+   - Suitable for CPU-intensive tasks but requires careful consideration.
+
+3. **Performance Considerations**:
+
+   - Laziness of intermediate operations improves efficiency.
+   - Avoid costly terminal operations unnecessarily.
+
+4. **Common Use Cases**:
+   - Filtering and transforming data.
+   - Grouping elements using `Collectors.groupingBy`.
+
+### **Practical Examples**
+
+- **Find the first non-repeating character in a string**:
+  ```java
+  String str = "swiss";
+  Character result = str.chars()
+      .mapToObj(c -> (char) c)
+      .filter(c -> str.indexOf(c) == str.lastIndexOf(c))
+      .findFirst()
+      .orElse(null);
+  ```
+- **Summing a list of integers**:
+  ```java
+  int sum = list.stream().reduce(0, Integer::sum);
+  ```
+
+---
+
+## **Lambdas**
+
+### **Key Concepts**
+
+1. **Functional Interfaces**:
+
+   - A lambda implements a functional interface (an interface with a single abstract method).
+   - Common examples: `Predicate`, `Function`, `Supplier`, `Consumer`.
+
+2. **Writing Lambdas**:
+
+   - **Single-line Lambda**: `(a, b) -> a + b`
+   - **Multi-line Lambda**:
+     ```java
+     (a, b) -> {
+         int sum = a + b;
+         return sum;
+     }
+     ```
+
+3. **Using Functional Interfaces**:
+
+   - Example for `Predicate<T>`:
+     ```java
+     Predicate<Integer> isEven = x -> x % 2 == 0;
+     ```
+   - Example for `Function<T, R>`:
+     ```java
+     Function<String, Integer> stringLength = s -> s.length();
+     ```
+
+4. **Method References**:
+
+   - Shorthand for lambdas: `Class::methodName`.
+   - Example: `System.out::println` instead of `x -> System.out.println(x)`.
+
+5. **Edge Cases**:
+   - Accessing effectively final variables in lambdas.
+   - Handling checked exceptions with lambdas.
+
+### **Built-in Functional Interfaces**
+
+1. **Predicate<T>**: `(T t) -> boolean`
+   - Example: `filter(x -> x > 5)`
+2. **Function<T, R>**: `(T t) -> R`
+   - Example: `map(x -> x.toString())`
+3. **Consumer<T>**: `(T t) -> void`
+   - Example: `forEach(System.out::println)`
+4. **Supplier<T>**: `() -> T`
+   - Example: `get(() -> "Hello")`
+
+### **Practical Examples**
+
+- **Sorting a list of custom objects**:
+  ```java
+  list.sort((a, b) -> a.getName().compareTo(b.getName()));
+  ```
+- **Transforming a list**:
+  ```java
+  List<String> upperCaseNames = names.stream()
+      .map(String::toUpperCase)
+      .collect(Collectors.toList());
+  ```
+
+---
+
+## **Additional Preparation Tips**
+
+1. **Explain Concepts**:
+
+   - Practice articulating your understanding clearly.
+   - Use examples or diagrams to explain Stream pipelines if necessary.
+
+2. **Hands-On Practice**:
+
+   - Solve coding challenges on LeetCode or HackerRank using Streams and Lambdas.
+
+3. **Mock Interview Questions**:
+
+   - What happens if you call `stream()` twice on the same collection?
+   - Can you use a lambda for an interface with multiple methods? Why or why not?
+
+4. **Common Misconceptions**:
+   - Streams do not replace all use cases for loops.
+   - Lambdas are syntactic sugar for anonymous inner classes.
