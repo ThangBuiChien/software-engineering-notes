@@ -1,63 +1,98 @@
-1. Java Fundamentals
-   Basic syntax and data types
-   Access modifiers
-   Primitive vs reference types
-   Static and instance variables
-   OOP concepts
-   Wrapper classes
+- Java Fundamentals
 
-2. Collections
+  - Basic syntax and data types
+  - Variables and constants (final keyword)
+  - Operators and expressions
+  - Control flow statements (if-else, switch-case, loops)
+  - Access modifiers
+  - Primitive vs reference types
+  - Static and instance variables, static methods
+  - Wrapper classes
+  - Type casting
+  - Varargs(... syntax)
 
-   - List, Set, Map interface, implementation and their hierarchy
-   - When to use List, Set, Map and their implementation such as ArrayList, LinkedList, HashSet, TreeSet, HashMap, TreeMap
-   - More advanced collection such as queue, stack, priority queue, vector
-   - Comparable and Comparator interfaces
-   - Some most common methods of List, Set, Map interface
-   - Unmodifiable & Read-Only Collections
-   - Concurrent Collections
+- OOP concepts
 
-3. Exceptional handling
-   3.1. checked and unchecked exceptions
-   3.2. throw vs throws
-   3.3. try-catch-finally
-   3.4. custom exceptions, best practices
+  - four pillars of OOP: Encapsulation, Inheritance, Polymorphism, Abstraction
+  - Class and Object
+  - Constructor and constructor chaining
+  - this and super keyword
+  - Method overloading and overriding
+  - Abstract class and Interface
+  - Default and static methods in interface
+  - Object cloning (clone() method and cloneable interface)
 
-4. Multithreading (Currently it not necessary for fresher)
+- Collections
 
-5. Important concepts
+  - List, Set, Map interface, implementation and their hierarchy
+  - When to use List, Set, Map and their implementation such as ArrayList, LinkedList, HashSet, TreeSet, HashMap, TreeMap
+  - More advanced collection such as queue, stack, priority queue, vector
+  - Iterator and ListIterator
+  - Comparable and Comparator interfaces (compareTo() and compare() methods)
+  - Some most common methods of List, Set, Map interface
+  - Unmodifiable & Read-Only Collections (Collections.unmodifiableXXX()) (List.of(), Set.of(), Map.of())
+  - Concurrent Collections
 
-   - String, StringBuilder, StringBuffer
+- Exceptional handling
 
-   - Pass-by-Value vs. Pass-by-Reference in Java
+  - checked and unchecked exceptions
+  - throw vs throws
+  - try-catch-finally
+  - try-with-resources (Java 7+)
+  - custom exceptions (extends Exception or RuntimeException)
+  - best practices
 
-   - Memory management (stack vs heap)
+- Multithreading (Currently it not necessary for fresher)
 
-   - Garbage collection
+- Important concepts
 
-   - Understanding Equality, == vs equals, hashcode and equals
+  - String handling
 
-   - final, finally, finalize
+    - String, StringBuilder, StringBuffer
+    - String immutability
+    - String pool
 
-6. Java 8+ features
+  - Memory management
 
-   - Lambda expressions
+    - stack vs heap
+    - Object creation and memory allocation
 
-     - functional interfaces
-     - single abstract method interfaces
-     - default & static methods in interfaces
-     - lambda syntax
-     - method references
+  - Garbage collection
 
-   - Stream API
+    - Reference types (Strong, Weak, Soft, Phantom)
+    - finalize() method
 
-     - Intermediate operations
-     - Terminal operations
-     - Reduction
-     - Collectors
-     - Parallel streams
+  - Equality and Comparison
 
-   - Optional class
+    - == vs equals
+    - hashcode and equals method
 
-   - Date and Time API
+  - final, finally, finalize
 
-   - var keyword (java 10+)
+  - Pass-by-Value vs. Pass-by-Reference in Java
+
+- Java 8+ features
+
+  - Lambda expressions
+
+    - functional interfaces
+    - single abstract method interfaces
+    - default & static methods in interfaces
+    - lambda syntax
+    - method references
+
+  - Stream API
+
+    - Intermediate operations
+    - Terminal operations
+    - Reduction
+    - Collectors
+    - Parallel streams
+
+  - Optional class
+
+  - Date and Time API
+
+  - var keyword (java 10+)
+
+  - record (java 14+)
