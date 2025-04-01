@@ -49,7 +49,9 @@
 [Back to Table of Contents](#table-of-contents)
 
 _italic_ or _italic_
+
 **bold** or **bold**
+
 **_bold italic_** or **_bold italic_**
 
 ## Lists
