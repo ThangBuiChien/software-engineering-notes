@@ -130,3 +130,8 @@ public String getName3(Long id) {
 
 
 ```
+
+4. Debug
+
+![alt text](image-2.png)
+logging.level.org.springframework.security=TRACE
