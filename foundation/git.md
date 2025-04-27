@@ -18,6 +18,9 @@
 | Discard all unstaged changes in all files                                   | `git restore .`                      |
 | Reset branch to match remote (⚠️ erase all local changes and commits)       | `git reset --hard origin/branchName` |
 | Clean all file that not add to staging area (⚠️ delete all untracked files) | `git clean -fd`                      |
+| Stash changed changes (save them temporarily)                               | `git stash`                          |
+| Apply stashed changes (restore them)                                        | `git stash apply`                    |
+| View stashed changes (list)                                                 | `git stash list`                     |
 
 ---
 
