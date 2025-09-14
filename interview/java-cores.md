@@ -506,6 +506,49 @@ entrySet(): Returns a set of key-value pairs.
 
 ## Multithreading
 
+## 🧵 **Threads**
+
+- A **thread** = smallest unit of execution inside a program (multiple tasks can run concurrently).
+- Every Java app starts with the **main thread**.
+- **Ways to create a thread**:
+
+  1. **Extend `Thread`** → override `run()`, call `start()`.
+  2. **Implement `Runnable`** → pass to a `Thread`, then call `start()`.
+
+     - `Runnable` is a **functional interface (SAM)** → can use lambdas.
+     - Preferred way (more flexible, reusable, allows class inheritance).
+
+- **Key methods**:
+
+  - `start()` → creates a new thread and internally calls `run()`.
+  - `run()` → defines what the thread does (don’t call directly if you want concurrency).
+  - `sleep(ms)` → pause temporarily.
+  - `join()` → wait for another thread to finish.
+
+---
+
+## 🔄 **Thread Life Cycle**
+
+- **NEW** → thread created (`new Thread()`), not started yet.
+- **RUNNABLE** → after `start()`, waiting for CPU scheduling.
+- **RUNNING** → actively executing `run()`.
+- **WAITING / TIMED_WAITING** → paused (via `wait()`, `sleep(ms)`, `join()`).
+- **BLOCKED** → waiting to enter a synchronized block (lock held by another thread).
+- **TERMINATED** → finished execution, cannot restart.
+
+👉 Typical flow:
+
+```
+NEW → RUNNABLE → RUNNING → TERMINATED
+        ↘ (WAITING / BLOCKED) ↗
+```
+
+---
+
+✅ With this, you’ve got everything needed at **Technician level**.
+
+Would you like me to turn this into a **compact cheat sheet (like one page, bullet-only, no extra text)** so you can paste directly into your study notes?
+
 - **Thread lifecycle**
 
 ```java
